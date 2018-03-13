@@ -10,7 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     //let parser = Parser()
-    var transactionsArray: [TransactionDetail] = []
+    //var transactionsArray: [TransactionDetail] = []
 
     @IBOutlet weak var emvDataTextVIew: UITextView!
     @IBOutlet weak var parseButton: UIButton!
@@ -34,13 +34,16 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier ==  "toDetailView" {
             if let detailVC = segue.destination as? TransactionDetailTableViewController {
-                detailVC.transactionsArray = transactionsArray
+                detailVC.transactionsArray = Parser.transactions
             }
         }
     }
  
     @IBAction func parseButtonTapped(_ sender: Any) {
         guard let text = emvDataTextVIew.text else { return }
-       self.transactionsArray = Parser.parseTransactions(tlvString: text)
+
+        Parser.parseTransactions(tlvString: text)
+        
+        
     }
 }
