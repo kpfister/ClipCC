@@ -154,3 +154,12 @@ class Tag {
         
     }
 }
+
+
+/** getTagName uses a tag String to retrieve its corresponging name
+ - parameters:
+ - tag: The tag number you want the name for Ex: "9F06"
+ - returns:
+ More detailed name for the tag. Ex: Application Identifier (AID) – terminal
+ */
+

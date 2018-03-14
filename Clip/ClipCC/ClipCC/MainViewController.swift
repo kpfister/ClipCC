@@ -8,26 +8,43 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
-    //let parser = Parser()
-    //var transactionsArray: [TransactionDetail] = []
-
+class MainViewController: UIViewController, UITextViewDelegate {
+ 
     @IBOutlet weak var emvDataTextVIew: UITextView!
     @IBOutlet weak var parseButton: UIButton!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        designParseButton()
+        addTapGesture()
     }
     
-
     
+    //MARK: - UI design Functions
+    func designParseButton() {
+        parseButton.layer.cornerRadius = 8
+        parseButton.layer.borderColor = UIColor.orange.cgColor
+        parseButton.layer.borderWidth = 1
+    }
+    
+    //MARK: - Helper Functions
+    func addTapGesture() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector (dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+    }
+    // Dimiss the keyboard on tap
+    @objc func dismissKeyboard() {
+        //view.endEditing(true)
+        emvDataTextVIew.resignFirstResponder()
+    }
+    // Dismiss the keyboard on Done key
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            emvDataTextVIew.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -38,12 +55,14 @@ class MainViewController: UIViewController {
             }
         }
     }
- 
+    
+    
+    // MARK: - Actions
     @IBAction func parseButtonTapped(_ sender: Any) {
         guard let text = emvDataTextVIew.text else { return }
 
         Parser.parseTransactions(tlvString: text)
-        
-        
     }
-}
+    
+    
+} ///End

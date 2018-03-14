@@ -14,8 +14,8 @@ class TransactionDetail {
     var tag: String
     var value: String
     
-    init(name: String, tagDetail: String, value: String) {
-        self.tag = name
+    init(tag: String, tagDetail: String, value: String) {
+        self.tag = tag
         self.tagDetail = tagDetail
         self.value = value
         

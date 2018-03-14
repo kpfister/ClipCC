@@ -10,11 +10,23 @@ import Foundation
 
 class Converter {
     
+    /** create a U16 Int from a hex string
+     - parameters:
+     - hex: The string you wnat to convert to Int
+     - returns:
+     Int
+     */
     class func hexToInt(hex: String) -> Int {
         guard let num = Int(hex, radix: 16) else { return 0}
         return num
     }
     
+    /** Create a String from a hexString
+     - parameters:
+     - hex: The hex data
+     - returns:
+     String
+     */
     class func hexToString(hex: String) -> String? {
         guard hex.count % 2 == 0 else {
             return nil
