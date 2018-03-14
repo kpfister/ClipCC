@@ -9,10 +9,13 @@
 import XCTest
 @testable import ClipCC
 
+var tagUnderTest: Tag!
 class ClipCCTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        tagUnderTest = Tag()
+       
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     

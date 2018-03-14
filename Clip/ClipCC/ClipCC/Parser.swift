@@ -9,10 +9,14 @@
 import Foundation
 
 class Parser {
-    // Our array of data points to display
-    static var transactions = [TransactionDetail]()
     
-    static func parseTransactions(tlvString: String, startIndex: Int = 0 ,startingLength: Int = 0) -> [TransactionDetail]  {
+    static let sharedInstance = Parser()
+    
+    
+    // Our array of data points to display
+    var transactions = [TransactionDetail]()
+    
+    func parseTransactions(tlvString: String, startIndex: Int = 0 ,startingLength: Int = 0) {
         // Tags can be either two or four character in legnth. theFirstTag is checking to see if the first two characters in the string can be read as a valid Tag
         let firstTag = tlvString.rangeOf(r: Range(startIndex...(startIndex + 1)))
         
@@ -57,17 +61,17 @@ class Parser {
                 let td = TransactionDetail(tag: tagName!, tagDetail:actualTag, value:formattedNumberString.uppercased())
                 self.transactions.append(td)
             }
+            //MARK: - Improvement I need to find a way to handle the excessdata.
             
             /// Manage recursion
             // Total count for this transaction, and where the next transaction starts
             let endOfTransaction = (length * 2 + (lengthEnd + 1))
-            if endOfTransaction != tlvString.count - 4 {
+            if endOfTransaction != tlvString.count {
+                //
                 parseTransactions(tlvString: tlvString, startIndex: endOfTransaction, startingLength: endOfTransaction)
-                //MARK: - Improvement
-                /// This has to possible to accomblish in a better way. We are not using the return of this value... I'll have to refactor this after I learn more.
+                
             }
         }
-        return self.transactions
     }
 }
 

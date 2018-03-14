@@ -89,10 +89,6 @@
 		755B3B63205773AA008DD94C = {
 			isa = PBXGroup;
 			children = (
-				755B3B9D205773C8008DD94C /* TransactionDetail.swift */,
-				755B3B9F205783F1008DD94C /* Converter.swift */,
-				755B3BA120578490008DD94C /* Tag.swift */,
-				755B3BA920578B46008DD94C /* Parser.swift */,
 				755B3B6E205773AA008DD94C /* ClipCC */,
 				755B3B83205773AA008DD94C /* ClipCCTests */,
 				755B3B8E205773AA008DD94C /* ClipCCUITests */,
@@ -113,6 +109,10 @@
 		755B3B6E205773AA008DD94C /* ClipCC */ = {
 			isa = PBXGroup;
 			children = (
+				755B3B9D205773C8008DD94C /* TransactionDetail.swift */,
+				755B3B9F205783F1008DD94C /* Converter.swift */,
+				755B3BA120578490008DD94C /* Tag.swift */,
+				755B3BA920578B46008DD94C /* Parser.swift */,
 				755B3B6F205773AA008DD94C /* AppDelegate.swift */,
 				755B3B73205773AA008DD94C /* Main.storyboard */,
 				755B3BA720578688008DD94C /* TransactionDetailTableViewController.swift */,

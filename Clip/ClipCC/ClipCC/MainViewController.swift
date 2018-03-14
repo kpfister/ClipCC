@@ -21,6 +21,7 @@ class MainViewController: UIViewController, UITextViewDelegate {
     
     //MARK: - UI design Functions
     func designParseButton() {
+        
         parseButton.layer.cornerRadius = 8
         parseButton.layer.borderColor = UIColor.orange.cgColor
         parseButton.layer.borderWidth = 1
@@ -45,23 +46,11 @@ class MainViewController: UIViewController, UITextViewDelegate {
         return true
     }
 
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier ==  "toDetailView" {
-            if let detailVC = segue.destination as? TransactionDetailTableViewController {
-                detailVC.transactionsArray = Parser.transactions
-            }
-        }
-    }
-    
-    
     // MARK: - Actions
     @IBAction func parseButtonTapped(_ sender: Any) {
         guard let text = emvDataTextVIew.text else { return }
-
-        Parser.parseTransactions(tlvString: text)
+        // If there is text there. Lets parse it
+        Parser.sharedInstance.parseTransactions(tlvString: text)
     }
     
     
