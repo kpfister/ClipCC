@@ -9,6 +9,7 @@
 import Foundation
 
 class Parser {
+    // Our array of data points to display
     static var transactions = [TransactionDetail]()
     
     static func parseTransactions(tlvString: String, startIndex: Int = 0 ,startingLength: Int = 0) -> [TransactionDetail]  {
@@ -63,7 +64,7 @@ class Parser {
             if endOfTransaction != tlvString.count - 4 {
                 parseTransactions(tlvString: tlvString, startIndex: endOfTransaction, startingLength: endOfTransaction)
                 //MARK: - Improvement
-                /// This has to possible to accomblish in a better way. We are not using the return of this value... I'll have to refactor this after I learn more. 
+                /// This has to possible to accomblish in a better way. We are not using the return of this value... I'll have to refactor this after I learn more.
             }
         }
         return self.transactions
