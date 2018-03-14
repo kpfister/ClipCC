@@ -26,31 +26,30 @@ class Parser {
             
             /// Get length
             let lengthStart = actualTag.count + startingLength
-            
+            // The legnth start takes in account the amount of characters in the tag along with where the last value ended
             let lengthEnd = (actualTag.count + 1) + startingLength
-            
+            // The legnth end takes in account the amount of characters in the tag along with where the last value ended while also disreguarding the first character in the length
             let hexLength = tlvString.rangeOf(r: Range(lengthStart...lengthEnd))
-            
+            // The hex value of the Length
             let length = Converter.hexToInt(hex: hexLength)
-            
+            // Converted hex to Int for use in the following equations
             /// Get value
             let value = tlvString.rangeOf(r: Range((lengthStart)...(length * 2) + lengthEnd))
-            
+            // Length is doubled as there are two bytes in each character
             let stringValue = Converter.hexToString(hex: value)
-            
+            // Convert the hex value into a String if possible
             let intValue = Converter.hexToInt(hex: value)
-            
+            // Convert the hex value into a Int if possible
             if intValue == 0 && stringValue == nil {
-                // if the int value is 0 and the string value is nil - we want the value
-                //transactions.append(stringValue!)
+                // If the int value is 0 and the string value is nil - we want the value
                 let td = TransactionDetail(tag: tagName!, tagDetail:actualTag, value: value)
                 transactions.append(td)
-                
             } else if intValue == 0 && stringValue != nil {
-                // we want the string value
+                // If the Int value can be converted into a 0 and the stringValue can be created - we want the string
                 let td = TransactionDetail(tag: tagName!, tagDetail:actualTag, value: stringValue!)
                 transactions.append(td)
             } else {
+                // All that should be left is the IntValue case. Lets format the string to be more readable for what we expect
                 let numberString = String(intValue, radix: 16)
                 let formattedNumberString = numberString.dropFirst(1)
                 
@@ -63,6 +62,8 @@ class Parser {
             let endOfTransaction = (length * 2 + (lengthEnd + 1))
             if endOfTransaction != tlvString.count - 4 {
                 parseTransactions(tlvString: tlvString, startIndex: endOfTransaction, startingLength: endOfTransaction)
+                //MARK: - Improvement
+                /// This has to possible to accomblish in a better way. We are not using the return of this value... I'll have to refactor this after I learn more. 
             }
         }
         return self.transactions

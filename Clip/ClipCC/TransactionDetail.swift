@@ -20,6 +20,11 @@ class TransactionDetail {
         self.value = value
         
     }
+    /**
+     Tag Detail is the full tags name - EX: Issuer Application Data
+     Tag is the number representation for a tag - EX: 9F10
+     Value is the value for that tag - EX: 00146000002C0000000000000000000000FF
+     */
 }
 
 
