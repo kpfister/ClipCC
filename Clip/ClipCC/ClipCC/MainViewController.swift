@@ -14,8 +14,14 @@ class MainViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var parseButton: UIButton!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         designParseButton()
         addTapGesture()
+        
+        
+        // Used in the Testing
+        view.accessibilityIdentifier = "MainVC"
     }
     
     

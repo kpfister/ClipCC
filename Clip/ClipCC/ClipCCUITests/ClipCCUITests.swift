@@ -25,12 +25,20 @@ class ClipCCUITests: XCTestCase {
         
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        
     }
     
     // MARK: - Tests
     
     func testParsingData() {
+        // Launch the app
        app.launch()
+        // Make sure its showing the MainVC
+        XCTAssertTrue(app.isDisplayingMainVC)
+        // Tap the execute button to begin parsing the data
+        app.buttons["Execute"].tap()
+        // It works if It is no longer displaying the Main VC
+        XCTAssertFalse(app.isDisplayingMainVC)
     }
     
     override func tearDown() {
@@ -43,4 +51,11 @@ class ClipCCUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    
+}
+
+extension XCUIApplication {
+    var isDisplayingMainVC: Bool {
+        return otherElements["MainVC"].exists
+    }
 }
