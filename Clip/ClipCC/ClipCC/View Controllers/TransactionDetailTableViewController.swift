@@ -10,8 +10,6 @@ import UIKit
 
 class TransactionDetailTableViewController: UITableViewController {
     
-    //var transactionsArray: [TransactionDetail] = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -27,6 +25,7 @@ class TransactionDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "transactionDetailCell", for: indexPath) as? TransActionDetailCell else { return UITableViewCell()}
         let transactionsArray = Parser.sharedInstance.transactions
+    
         let transaction = transactionsArray[indexPath.row]
         cell.tagLabel.text = transaction.tag
         cell.tagDetailLabel.text = transaction.tagDetail

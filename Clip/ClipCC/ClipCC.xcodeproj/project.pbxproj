@@ -109,15 +109,12 @@
 		755B3B6E205773AA008DD94C /* ClipCC */ = {
 			isa = PBXGroup;
 			children = (
-				755B3B9D205773C8008DD94C /* TransactionDetail.swift */,
-				755B3B9F205783F1008DD94C /* Converter.swift */,
-				755B3BA120578490008DD94C /* Tag.swift */,
-				755B3BA920578B46008DD94C /* Parser.swift */,
+				755B3BB020597BEC008DD94C /* Model */,
+				755B3BB120597BF9008DD94C /* Model Controller */,
+				755B3BAF20597BCF008DD94C /* Helpers */,
+				755B3BB220597C05008DD94C /* View Controllers */,
 				755B3B6F205773AA008DD94C /* AppDelegate.swift */,
 				755B3B73205773AA008DD94C /* Main.storyboard */,
-				755B3BA720578688008DD94C /* TransactionDetailTableViewController.swift */,
-				755B3BA520578656008DD94C /* MainViewController.swift */,
-				755B3BA32057862A008DD94C /* TransActionDetailCell.swift */,
 				755B3B76205773AA008DD94C /* Assets.xcassets */,
 				755B3B78205773AA008DD94C /* LaunchScreen.storyboard */,
 				755B3B7B205773AA008DD94C /* Info.plist */,
@@ -141,6 +138,49 @@
 				755B3B91205773AA008DD94C /* Info.plist */,
 			);
 			path = ClipCCUITests;
+			sourceTree = "<group>";
+		};
+		755B3BAF20597BCF008DD94C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				755B3B9F205783F1008DD94C /* Converter.swift */,
+				755B3BA120578490008DD94C /* Tag.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		755B3BB020597BEC008DD94C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				755B3B9D205773C8008DD94C /* TransactionDetail.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		755B3BB120597BF9008DD94C /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				755B3BA920578B46008DD94C /* Parser.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		755B3BB220597C05008DD94C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				755B3BA520578656008DD94C /* MainViewController.swift */,
+				755B3BA720578688008DD94C /* TransactionDetailTableViewController.swift */,
+				755B3BB320597C12008DD94C /* Custom Cells */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		755B3BB320597C12008DD94C /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				755B3BA32057862A008DD94C /* TransActionDetailCell.swift */,
+			);
+			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
